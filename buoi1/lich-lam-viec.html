@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch làm việc - HTML</title>
+    <style type="text/css">
+        .timetable {
+            width: 60%;
+            table-layout: fixed;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px #000 solid;
+        }
+
+        table {
+            min-width: 470px;
+        }
+
+        th,
+        td {
+            height: 30px;
+            min-height: 30px;
+            text-align: center;
+            word-wrap: break-word;
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table id="information">
+            <tr>
+                <td>Họ tên</td>
+                <td><b>Trần Thanh Huy</b></td>
+            </tr>
+            <tr>
+                <td>MSSV</td>
+                <td><b>B1704814</b></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h1>Lịch làm việc</h1>
+        <table class="timetable">
+            <tr>
+                <th>Tuần 1</th>
+                <th>Thứ hai</th>
+                <th>Thứ ba</th>
+                <th>Thứ tư</th>
+                <th>Thứ năm</th>
+                <th>Thứ sáu</th>
+            </tr>
+            <tr>
+                <th>Tiết 1</th>
+                <td></td>
+                <td rowspan="2">Đảm bảo chất lượng và Kiểm thử phần mềm</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 2</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 4</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 5</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 6</th>
+                <td rowspan="3">Kiến trúc và Thiết kế phần mềm</td>
+                <td rowspan="3">Quản trị cơ sở dữ liệu</td>
+                <td></td>
+                <td></td>
+                <td rowspan="3">Lập trình Web</td>
+            </tr>
+            <tr>
+                <th>Tiết 7</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 8</th>
+                <td></td>
+                <td rowspan="2">Đảm bảo chất lượng và Kiểm thử phần mềm</td>
+            </tr>
+            <tr>
+                <th>Tiết 9</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Tiết 10</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
