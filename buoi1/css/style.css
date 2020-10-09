@@ -121,6 +121,7 @@ nav {
     letter-spacing: 2px;
 }
 
-.exercises, information {
+.exercises,
+.information {
     margin: 10px 30px;
 }
