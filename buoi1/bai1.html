@@ -5,47 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch làm việc - HTML</title>
     <style type="text/css">
-        .timetable {
-            width: 60%;
-            table-layout: fixed;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px #000 solid;
-        }
-
-        table {
-            min-width: 470px;
-        }
-
         th,
         td {
             height: 30px;
             min-height: 30px;
             text-align: center;
-            word-wrap: break-word;
             padding: 0 5px;
         }
+
+        #information table {
+            border: .5px solid #505050;
+        }
+
+        #information table td,
+        #information table th {
+            text-align: left;   
+        }
+
+        #information table th {
+            width: 90px;
+        }
+
+        #information table th h2 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        #timetable table {
+            width: 60%;
+            min-width: 470px;
+            table-layout: fixed;
+        }
+
+        #timetable table,
+        #timetable table th,
+        #timetable table td {
+            border: 1px #000 solid;
+        }        
     </style>
 </head>
 <body>
-    <div>
-        <table id="information">
+    <div id="information">
+        <table>
             <tr>
-                <td>Họ tên</td>
-                <td><b>Trần Thanh Huy</b></td>
+                <th colspan="2"><h2>Thông tin sinh viên</h2></th>
             </tr>
             <tr>
-                <td>MSSV</td>
-                <td><b>B1704814</b></td>
+                <th>Họ tên</th>
+                <td>Trần Thanh Huy</td>
+            </tr>
+            <tr>
+                <th>MSSV</th>
+                <td>B1704814</td>
             </tr>
         </table>
     </div>
-    <div>
+    <div id="timetable">
         <h1>Lịch làm việc</h1>
-        <table class="timetable">
+        <table>
             <tr>
                 <th>Tuần 1</th>
                 <th>Thứ hai</th>
