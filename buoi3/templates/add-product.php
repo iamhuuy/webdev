@@ -1,14 +1,15 @@
 <?php
 require("../config/connect.php");
+include("../config/validate-text.php");
 session_start();
 
 $username = $_SESSION['username'];
 $idtv = $_SESSION['idtv'];
 
 if (isset($_POST['submit'])) {
-    $tensp = $_POST['product-name'];
-    $chitietsp = $_POST['product-des'];
-    $giasp = $_POST['product-cost'];
+    $tensp = clean($_POST['product-name']);
+    $chitietsp = clean($_POST['product-des']);
+    $giasp = clean($_POST['product-cost']);
     $hinhanhsp = "../img/" . $_FILES['product-img']['name'];
 
     $sql = "INSERT INTO sanpham(tensp, chitietsp, giasp, hinhanhsp, idtv)

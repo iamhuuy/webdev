@@ -2,12 +2,18 @@
 require "../config/connect.php";
 session_start();
 
-$username = $_SESSION['username'];
-$idtv = $_SESSION['idtv'];
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $idtv = $_SESSION['idtv'];
 
-$sql = "SELECT * FROM sanpham WHERE idtv = '$idtv'";
+    $sql = "SELECT * FROM sanpham WHERE idtv = '$idtv'";
 
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
+} else {
+    header("location: index.php");
+}
+
+
 
 // if (isset($_GET['submit'])) {
 //     $_SESSION['idsp'] = $_GET['check'];
