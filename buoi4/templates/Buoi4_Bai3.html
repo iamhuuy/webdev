@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title> Lập trình web (CT428) </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- <link rel="stylesheet" type="text/css" href="style.css" media="screen" /> -->
+</head>
+<body>
+	<div id="wrap">
+		<div id="title">
+			<h1>Bài 3 - Buổi 4</h1>
+		</div> <!--end div title-->
+		<div id="menu">
+			<!-- chèn menu của sinh viên vào-->
+		</div> <!--end div menu-->
+		<div id="content">
+			<!--Nội dung trang web-->
+			<h1>Quảng cáo</h1>
+
+			<a href="http://www.hp.com" target="_blank" id="link"><img name="laptopImg" src="../img/hp.jpg" height="300" width="300" onmouseover="pauseTimer()" onmouseout="activateTimer()" /></a>
+
+			<p>Yêu cầu:<br/>
+			Có 4 hình ảnh của 4 công ty muốn quảng cáo đính kèm. Đầu tiên hiển thị một hình, cứ 2 giây thì thay hình ảnh khác, xoay vòng giữa 4 hình ảnh đã cho.<br/>
+			Khi người dùng rê chuột lên hình nào thì hình đó dừng lại không thay đổi để người dùng đọc thông tin về quảng cáo đó,
+			khi nào người dùng rê chuột khỏi thì 2 giây sau mới cho hiển thị hình tiếp theo.<br/>
+			Khi người dùng click vào hình nào thì liên kết đến website của hình đó ở cửa sổ mới.
+			</p>
+		</div> <!--end div content-->
+		<div id="footer">
+			<p>Họ tên SV: Trần Thanh Huy<br/> Email: huyb1704814@student.ctu.edu.vn</p>
+		</div> <!--end div footer-->
+	</div>
+	<!--end div wrap-->
+	<script type="text/javascript">
+		var myInterval;
+		var elementLink = document.getElementById('link');
+		var elementImage = document.getElementsByName('laptopImg')[0];
+		var PRODUCT_INFO = [
+			["http://www.hp.com", "img/hp.jpg"],
+			["http://www.dell.com", "img/dell.jpg"],
+			["http://www.acer.com.vn", "img/acer.jpg"],
+			["http://www.asus.com", "img/asus.jpg"],
+		];
+		var index = 0;
+
+		function changeImage() {
+			if (index > 3) index = 0;
+
+			elementLink.href = PRODUCT_INFO[index][0];
+			elementImage.src = "../" + PRODUCT_INFO[index][1];
+
+			index++;
+		}
+
+		function pauseTimer() {
+			clearInterval(myInterval);
+		}
+
+		function activateTimer() {
+			myInterval = setInterval(changeImage, 2000);
+		}
+
+		window.onload = function() {
+			myInterval = setInterval(changeImage, 2000);
+		}
+	</script>
+</body>
+</html>
