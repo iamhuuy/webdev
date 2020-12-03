@@ -1,42 +1,35 @@
 <?php
 session_start();
 require("../config/connect.php");
+include("../config/validate-text.php");
 
 $username = $_SESSION['username'];
 $idtv = $_SESSION['idtv'];
 
-$idsp = $_GET['idsp'];
+if (isset($_GET['idsp'])) {
+    $idsp = $_GET['idsp'];
 
-echo $idsp;
-
-$sql = "SELECT * FROM sanpham WHERE idsp = '$idsp' AND idtv = '$idtv'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-}
-
-if (isset($_POST['submit'])) {
-    $tensp = $_POST['product-name'];
-    $chitietsp = $_POST['product-des'];
-    $giasp = $_POST['product-cost'];
-    $hinhanhsp = "../img/" . $_FILES['product-img']['name'];
-
-    $sql = "UPDATE sanpham
-            SET tensp='$tensp', chitietsp='$chitietsp', giasp='$giasp', hinhanhsp='$hinhanhsp'
-            WHERE idsp='$idsp' AND idtv='$idtv'";
-
-    echo $sql;
-    $result = $conn->query($sql);
-    if ($result) {
-        move_uploaded_file($_FILES['product-img']['tmp_name'], $hinhanhsp);
-        // header("location: product.php");
-    }
-} else if (isset($_POST['reset'])) {
     $sql = "SELECT * FROM sanpham WHERE idsp = '$idsp' AND idtv = '$idtv'";
     $result = $conn->query($sql);
+
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
     }
+
+}
+
+if (isset($_POST['submit'])) {
+    $idsp = clean($_POST['product-id']);
+    $tensp = clean($_POST['product-name']);
+    $chitietsp = clean($_POST['product-des']);
+    $giasp = clean($_POST['product-cost']);
+
+    $sql = "UPDATE sanpham
+            SET tensp='$tensp', chitietsp='$chitietsp', giasp='$giasp'
+            WHERE idsp='$idsp' AND idtv='$idtv'";
+
+    $result = $conn->query($sql);
+    echo "<script>window.location.href='product.php'</script>";
 }
 
 $conn->close();
@@ -55,14 +48,13 @@ $conn->close();
     <div class="container">
         <?php include("controller-bar.php") ?>
         <div class="content">
-            <form action="edit-product.php" method="post" enctype="multipart/form-data">
+            <form action="edit-product.php" method="post">
                 <table>
                     <tr>
                         <td><h3>Chi tiết sản phẩm</h3></td>
                     </tr>
                     <tr>
-                        <td>ID</td>
-                        <td><input type="text" name="product-id" value="<?php echo $idsp ?>" disabled></td>
+                        <td><input type="hidden" name="product-id" value="<?php echo $idsp ?>"></td>
                     </tr>
                     <tr>
                         <td>Tên sản phẩm</td>
@@ -75,13 +67,6 @@ $conn->close();
                     <tr>
                         <td>Giá sản phẩm</td>
                         <td><input type="number" name="product-cost" value="<?php echo $row['giasp'] ?>"> (VND)</td>
-                    </tr>
-                    <tr>
-                        <td>Hình ảnh</td>
-                        <td>
-                            <img src="<?php echo $row['hinhanhsp'] ?>" alt="" style="height:200px">
-                            <input type="file" name="product-img">
-                        </td>
                     </tr>
                     <tr>
                         <td></td>

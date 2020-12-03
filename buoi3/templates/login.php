@@ -1,9 +1,10 @@
 <?php
 require("../config/connect.php");
+include("../config/validate-text.php");
 
 if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $username = clean($_POST['username']);
+    $password = md5(clean($_POST['password']));
 
     $sql = "SELECT * FROM thanhvien WHERE tendangnhap='$username' AND matkhau='$password'";
     $result = $conn->query($sql);
@@ -20,7 +21,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['hobby'] = $row['sothich'];
         $_SESSION['profile_pic'] = $row['hinhanh'];
 
-        header("location: profile.php");
+        header("location: index.php");
     } else {
         echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng')</script>";
     }
