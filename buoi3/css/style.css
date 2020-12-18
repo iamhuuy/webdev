@@ -23,6 +23,7 @@ img {
 
 a {
     text-decoration: none;
+    cursor: pointer !important;
 }
 
 .container {
@@ -62,6 +63,10 @@ a {
     width: 80%;
 }
 
+.text-error {
+    color: red;
+}
+
 #info-father,
 #info-father td {
     border: 1px solid #000;
@@ -96,4 +101,24 @@ a {
 #product td,
 #product th {
     border: 1px solid blue;
+}
+
+#product-detail td {
+    border: 1px solid red;
+}
+
+#product-detail img {
+    width: 200px;
+}
+
+#filter-name {
+    line-height: 23px;
+}
+
+.td-hover:hover > .hide {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
 }

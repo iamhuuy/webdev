@@ -1,6 +1,6 @@
 <?php
-require("../config/connect.php");
-include("../config/validate-text.php");
+require("../../buoi3/config/connect.php");
+include("../../buoi3/config/validate-text.php");
 
 if (isset($_POST['submit'])) {
     $username = clean($_POST['username']);
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['hobby'] = $row['sothich'];
         $_SESSION['profile_pic'] = $row['hinhanh'];
 
-        header("location: index.php");
+        echo "<script>window.location.href='../../buoi3/templates/index.php'</script>";
     } else {
         echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng')</script>";
     }
@@ -36,7 +36,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../buoi3/css/style.css">
     <script src="../js/script.js"></script>
 </head>
 <body>

@@ -1,5 +1,5 @@
 <?php
-require "../config/connect.php";
+require("../../buoi3/config/connect.php");
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -10,14 +10,9 @@ if (isset($_SESSION['username'])) {
 
     $result = $conn->query($sql);
 } else {
-    header("location: index.php");
+    header("location: ../../buoi3/templates/index.php");
 }
 
-
-
-// if (isset($_GET['submit'])) {
-//     $_SESSION['idsp'] = $_GET['check'];
-// }
 
 ?>
 
@@ -27,11 +22,12 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách sản phẩm</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../buoi3/css/style.css">
+    <script src="../../buoi5/js/script.js"></script>
 </head>
 <body>
     <div class="container">
-        <?php include "controller-bar.php" ?>
+        <?php include "../../buoi3/templates/controller-bar.php" ?>
 
         <div class="content">
             <table id="product">
@@ -39,7 +35,10 @@ if (isset($_SESSION['username'])) {
                     <td><a href="add-product.php">Thêm sản phẩm</a></td>
                 </tr>
                 <tr>
-                    <td><h3>Danh sách sản phẩm</h3></td>
+                    <td>
+                        <h3>Danh sách sản phẩm</h3>
+                        Nhập để tìm kiếm: <input type="text" id="filter-name" onkeyup="filterProduct(this.value);">
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -59,11 +58,11 @@ if (isset($_SESSION['username'])) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 echo "<td>".$row['idsp']."</td>";
-                                echo "<td>".$row['tensp']."</td>";
+                                echo "<td class='td-hover' onmouseout='' onmouseover=''>".$row['tensp']."<span class='hide'>Hello</span></td>";
                                 echo "<td>".$row['giasp']."</td>";
-                                echo "<td><a href='product-detail.php?idsp=".$row['idsp']."'>Chi tiết</a></td>";
-                                echo "<td><a href='edit-product.php?idsp=".$row['idsp']."'>Sửa</a></td>";
-                                echo "<td><a href='delete-product.php?idsp=".$row['idsp']."'>Xóa</a></td>";
+                                echo "<td><a href='#' onclick='loadDetail(".$row['idsp'].")'>Chi tiết</a></td>";
+                                echo "<td><a href='../../buoi3/templates/edit-product.php?idsp=".$row['idsp']."'>Sửa</a></td>";
+                                echo "<td><a href='../../buoi3/templates/delete-product.php?idsp=".$row['idsp']."'>Xóa</a></td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
@@ -71,6 +70,7 @@ if (isset($_SESSION['username'])) {
 
                         $conn->close();
                         ?>
+                        <span id="detail"></span>
                     </td>
                 </tr>
             </table>
