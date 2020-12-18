@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $tensp = clean($_POST['product-name']);
     $chitietsp = clean($_POST['product-des']);
     $giasp = clean($_POST['product-cost']);
-    $hinhanhsp = "../img/" . $_FILES['product-img']['name'];
+    $hinhanhsp = "../../buoi3/img/" . $_FILES['product-img']['name'];
 
     $sql = "INSERT INTO sanpham(tensp, chitietsp, giasp, hinhanhsp, idtv)
             VALUES ('$tensp', '$chitietsp', '$giasp' , '$hinhanhsp', '$idtv')";

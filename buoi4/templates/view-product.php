@@ -1,5 +1,5 @@
 <?php
-require "../config/connect.php";
+require "../../buoi3/config/connect.php";
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -23,7 +23,7 @@ if (isset($_SESSION['username'])) {
     }
 
 } else {
-    header("location: index.php");
+    header("location: ../../buoi3/templates/index.php");
 }
 
 ?>
@@ -34,12 +34,12 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ảnh sản phẩm</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../buoi3/css/style.css">
 
 </head>
 <body>
     <div class="container">
-        <?php include "controller-bar.php" ?>
+        <?php include "../../buoi3/templates/controller-bar.php" ?>
         <div class="content">
             <h3>Đây là trang xem sản phẩm</h3>
             <form>
